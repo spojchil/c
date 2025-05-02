@@ -1,0 +1,4 @@
+.vscode/*
+学习c/*
+!学习c/*.c
+build/*
