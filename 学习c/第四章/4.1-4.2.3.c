@@ -22,12 +22,16 @@ int main()  // 课本上就没有写void
     printf("Also, 你的第一个名字有 %d lentters,\n", letters);
     printf("和我们%dbytes to store it.\n", size);
 
-    //4.2.2
+    // 4.2.2
     char 名字[40];
     printf("你的名字是？");
     scanf("%s", 名字);  // 只会读取字符串的第一个单词，在遇到空格时停止
     printf("你好, %s. %s\n", 名字, PRAISE);
     // 's'是字符常量，而"s"是字符串字面量，后者由字符's'和空字符'\0'组成。
+
+    // 4.2.3
+    printf("Also, 你的第一个名字有 %d lentters,占用%zd内存\n",
+         letters, sizeof name);  // 你的第一个名字有 9 lentters,占用40内存
 
     return 0;
 }
