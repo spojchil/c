@@ -1,7 +1,7 @@
 // 2025 5 4 字符串和格式化输入/输出
 // 演示与用户交互 4.1
 #include <stdio.h>
-#include <string.h>
+#include <string.h>  // 提供strlen()函数的原型
 #define DENSITY 1003.42
 #define PRAISE "你是一个extraordinary being."
 int main()  // 课本上就没有写void
