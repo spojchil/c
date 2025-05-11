@@ -23,7 +23,7 @@ int main(void)
 
     time = 每分秒数 * min + sec;
     distm = 每公英里 * distk;
-    rate = distm / time * 每时分数;
+    rate = distm / time * 每时秒数;
     mtime = (double) time / distm;
     mmin = (int) mtime / 每分秒数;
     msec = (int) mtime % 每分秒数;
