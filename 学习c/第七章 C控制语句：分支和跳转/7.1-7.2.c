@@ -118,5 +118,10 @@ if (number > 6)
     if (number < 12)
     printf("大于6且小于12");
 else
-    
+    printf("抱歉，你输了")
+
+else 与第二个if 匹配
+没有花括号else与离他最近的if匹配
+
 */
+
