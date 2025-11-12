@@ -93,3 +93,11 @@ void 选择(void){
     printf("Bye!\n");
     
 }
+/*
+goto语句，有两部分goto和标签名，标签名遵循变量命名规则
+goto part2;
+
+part2:  需要冒号
+printf("Refined analusis:\n");
+标签可以在goto的前面
+*/
