@@ -8,7 +8,7 @@
                 "-D__USE_MINGW_ANSI_STDIO=1",
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "${fileDirname}\\*.c",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
