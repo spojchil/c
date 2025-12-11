@@ -1,0 +1,15 @@
+类型限定符有const(恒常性constancy)和volatile(易变性volatility)
+C99允许多次使用同一个限定符，多余的被忽略
+const const const int n = 3;
+
+对指针的使用
+const int * const p = (一个地址);
+*前的const限定了不允许通过指针p修改p指向的变量
+*后的const限定了不允许修改指针p本身
+
+volatile 限定符告诉计算机其他程序可以修改该变量
+
+restrict 只能用于指针，告诉指针是访问数据唯一且初始的方式
+
+_Atomic 声明原子类型的变量
+赋值atomic_store(&hogs, 12)
