@@ -23,7 +23,7 @@ int main(void){
 }
 
 void getinfo(struct namect * pst){
-    printf("Please enter your first name\n");
+    printf("Please 输入 your first name\n");
     s_gets(pst->fname, NLEN);
     printf("Please enter your last name\n");
     s_gets(pst->lname, NLEN);
