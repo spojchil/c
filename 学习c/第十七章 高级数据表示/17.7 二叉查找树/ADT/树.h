@@ -1,5 +1,5 @@
-#ifndef _树_H_
-#define _树_H_
+#ifndef 树_H_
+#define 树_H_
 
 #include <stdbool.h>
 
@@ -10,7 +10,8 @@ typedef struct A项{
     char 宠物种类[尺寸];
 } 项;
 
-#define 最多项数 100
+// 这里是测试固定的大小
+#define 最多项数 10
 
 typedef struct A节点{
     项 项值;
@@ -19,7 +20,7 @@ typedef struct A节点{
 } 节点;
 
 typedef struct A树{
-    节点 *根节点;
+    节点 *根指针;
     int 项数;
 } 树;
 
@@ -35,7 +36,7 @@ bool 增加项(const 项 *, 树 *);
 
 bool 项是否存在(const 项 *, const 树 *);
 
-bool 删除项(const 项 *, const 树 *);
+bool 删除项(const 项 *, 树 *);
 
 void 项函数应用(const 树 *, void (*)(项));
 
