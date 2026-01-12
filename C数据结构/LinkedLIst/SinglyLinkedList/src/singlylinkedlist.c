@@ -23,12 +23,14 @@ bool sll_append(SLL* plist, const SLLElem elem){
     }
     new_node->elements = elem;
     new_node->next = NULL;
+
     if (sll_is_empty(plist))
-        plist->head == new_node;
+        plist->head = new_node;
     else{
         SLLNode* current = plist->head;
         while(current->next != NULL)
             current = current->next;
+        current->next = new_node;
     }
     plist->len++;
     return true;
@@ -48,7 +50,7 @@ bool sll_insert(SLL* plist, const SLLElem elem,
         return false;
     }
     if (sll_is_empty(plist))
-        plist->head == new_node;
+        plist->head = new_node;
     else {
         SLLNode* current = plist->head;
         for (int i = 0; i < index - 1; i++)
@@ -60,3 +62,118 @@ bool sll_insert(SLL* plist, const SLLElem elem,
     return true;
 }
 
+int sll_find(const SLL* plist, const SLLElem elem,
+    int (*elem_cmp)(const SLLElem, const SLLElem)){
+    if (sll_is_empty(plist))
+        return false;
+    int i = 0;
+    SLLNode* current = plist->head;
+    while (current->next != NULL){
+        if (elem_cmp(current->elements, elem) == 0)
+            return i;
+        i++;
+        current = current->next;
+    }
+    return -1;
+}
+
+bool sll_get(const SLL* plist, const int index,
+    SLLElem* pretelem){
+    if (index >= plist->len){
+        fprintf(stderr, "索引越界\n");
+        pretelem = NULL;
+        return false;
+    }
+    SLLNode* current = plist->head;
+    for (int i = 0; i < index; i++)
+        current = current->next;
+    *pretelem = current->elements;
+    return true;
+}
+
+bool sll_remove(SLL* plist, const int index){
+    if (index >= plist->len){
+        fprintf(stderr, "索引越界\n");
+        return false;
+    }
+    if (plist->len == 1){
+        free(plist->head);
+        plist->head = NULL;
+        plist->len--;
+        return true;
+    }
+    SLLNode* current = plist->head;
+    for (int i = 0; i < index - 1; i++)
+        current = current->next;
+    if (current->next->next == NULL){
+        free(current->next);
+        current->next = NULL;
+    }
+    SLLNode* temp;
+    temp = current->next;
+    current->next = temp->next;
+    free(temp);
+    plist->len--;
+    return false;
+}
+
+void sll_traverse(const SLL* plist, void (*pfun)(SLLElem)){
+    if (sll_is_empty(plist)){
+        fprintf(stderr, "链表为空\n");
+        return;
+    }
+    SLLNode* current = plist->head;
+    while (current != NULL){
+        pfun(current->elements);
+        current = current->next;
+    }
+}
+
+bool sll_reverse(SLL* plist){
+    if (sll_is_empty(plist)){
+        fprintf(stderr, "链表为空");
+        return false;
+    }
+
+    SLLNode* prev = NULL;
+    SLLNode* next = NULL;
+    SLLNode* curr = plist->head;
+
+    while (curr != NULL){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    plist->head = prev;
+
+    return true;
+}
+
+bool sll_remove_by_value(SLL* plist,
+    const SLLElem elem,
+    int (*elem_cmp)(const SLLElem, const SLLElem)){
+    int index;
+    if ((index = sll_find(plist, elem, elem_cmp)) == -1){
+        fprintf(stderr, "值不存在\n");
+        return false;
+    }
+    
+    return sll_remove(plist, index);
+}
+
+void sll_clear(SLL* plist){
+    SLLNode* next;
+    next = plist->head;
+    while (plist->head != NULL){
+        plist->head = next->next;
+        free(next);
+    }
+    plist->len = 0;
+}
+
+void sll_destroy(SLL* plist){
+    sll_clear(plist);
+    free(plist);
+    plist = NULL;
+}

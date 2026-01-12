@@ -42,7 +42,7 @@ bool sll_get(const SLL* plist, const int index,
 bool sll_remove(SLL* plist, const int index);
 
 // 应用到每个数据遍历
-bool sll_traverse(const SLL* plist,
+void sll_traverse(const SLL* plist,
     void (*pfun)(SLLElem));
 
 bool sll_reverse(SLL* plist);
@@ -53,10 +53,10 @@ bool sll_remove_by_value(SLL* plist,
     int (*elem_cmp)(const SLLElem, const SLLElem));
 
 // 清空链表但保持结构
-bool sll_clear(SLL* plist);
+void sll_clear(SLL* plist);
 
 // 销毁单链表
-bool sll_destroy(SLL* plist);
+void sll_destroy(SLL* plist);
 
 #ifdef __cplusplus
 }
