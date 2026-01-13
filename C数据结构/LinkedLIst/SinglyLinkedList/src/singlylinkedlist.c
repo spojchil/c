@@ -64,11 +64,9 @@ bool sll_insert(SLL* plist, const SLLElem elem,
 
 int sll_find(const SLL* plist, const SLLElem elem,
     int (*elem_cmp)(const SLLElem, const SLLElem)){
-    if (sll_is_empty(plist))
-        return false;
     int i = 0;
     SLLNode* current = plist->head;
-    while (current->next != NULL){
+    while (current != NULL){
         if (elem_cmp(current->elements, elem) == 0)
             return i;
         i++;
@@ -108,6 +106,8 @@ bool sll_remove(SLL* plist, const int index){
     if (current->next->next == NULL){
         free(current->next);
         current->next = NULL;
+        plist->len--;
+        return false;
     }
     SLLNode* temp;
     temp = current->next;
@@ -163,11 +163,12 @@ bool sll_remove_by_value(SLL* plist,
 }
 
 void sll_clear(SLL* plist){
-    SLLNode* next;
-    next = plist->head;
-    while (plist->head != NULL){
-        plist->head = next->next;
-        free(next);
+    SLLNode* current;
+    current = plist->head;
+    while(current != NULL){
+        plist->head = current->next;
+        free(current);
+        current = plist->head;
     }
     plist->len = 0;
 }
