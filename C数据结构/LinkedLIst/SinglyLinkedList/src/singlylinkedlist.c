@@ -79,7 +79,6 @@ bool sll_get(const SLL* plist, const int index,
     SLLElem* pretelem){
     if (index >= plist->len){
         fprintf(stderr, "索引越界\n");
-        pretelem = NULL;
         return false;
     }
     SLLNode* current = plist->head;

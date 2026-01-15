@@ -1,4 +1,4 @@
-#include "singlylinkedlist.h"
+#include "../src/singlylinkedlist.h"
 #include <stdio.h>
 
 void sll_print(SLLElem elem);
@@ -29,7 +29,7 @@ int main(void){
     sll_traverse(list, sll_print);
     putchar('\n');
 
-    printf("返回值预期为2,实际值为%d\n", sll_find(list, 3, elem_cmp));
+    printf("返回值预期为3,实际值为%d\n", sll_find(list, 3, elem_cmp));
 
     // get首节点测试
     SLLElem tempelem;
@@ -56,6 +56,7 @@ int main(void){
     // 预期1->2->4->
     sll_traverse(list, sll_print);
     putchar('\n');
+    
     
 
     return 0;
