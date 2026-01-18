@@ -1,0 +1,1 @@
+/usr/bin/cc  -Werror -Wpedantic -Wall -fdiagnostics-color=always -g CMakeFiles/test_singlylinkedlist.dir/test/test.c.o -o test_singlylinkedlist  libsinglylinkedlist.a 
