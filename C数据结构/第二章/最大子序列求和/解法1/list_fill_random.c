@@ -5,13 +5,15 @@
 
 void list_fill_random(int list[], int size,
      int min, int max){
-    srand(time(NULL));
+    static int tt = 0;
+    tt++;
+    srand(time(NULL) + tt);
 
     for (int i = 0; i < size; i++)
         list[i] = rand()%(max - min) + min;
 }
 
-void list_print(const int list[], int size){
+void list_print(const int* list, int size){
     for (int i = 0; i < size; i++)
         printf("%d ", list[i]);
     putchar('\n');

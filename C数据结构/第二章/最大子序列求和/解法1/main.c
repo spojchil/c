@@ -7,7 +7,7 @@ int max_subsequence_sum2(const int list[], int size);
 int max_subsequence_sum3(const int list[], int size);
 
 int main(void){
-    int list[LISTSIZE] = {-2, 5, -1, 3, -4, 7};
+    int list[LISTSIZE] = {7, -10, 4, 5, -11, 6};
     
     // list_fill_random(list, LISTSIZE, -9, 9);
     list_print(list, LISTSIZE);
@@ -20,6 +20,20 @@ int main(void){
 
     printf("解法3最大值为%d\n",
          max_subsequence_sum3(list, LISTSIZE));
+
+    for (int i = 0; i < 10000; i++){
+        list_fill_random(list, LISTSIZE, -9, 9);
+        if ((max_subsequence_sum2(list, LISTSIZE) !=
+            max_subsequence_sum3(list, LISTSIZE) && max_subsequence_sum2(list, LISTSIZE) != 0)){
+            printf("解法2最大值为%d\n",
+                max_subsequence_sum2(list, LISTSIZE));
+
+            printf("解法3最大值为%d\n",
+                max_subsequence_sum3(list, LISTSIZE));
+
+            list_print(list, LISTSIZE);
+        }
+    }
 
     return 0;
 }
@@ -112,6 +126,8 @@ int max_subsequence_sum3(const int list[], int size){
 
 
 // 代码被豆包批评老惨了
+
+// 代码有问题，忽略了一种情况
 
 
 // 有一个动态规划的算法从时间复杂度是O(N)

@@ -5,7 +5,9 @@
 
 void list_fill_random(int list[], int size,
      int min, int max){
-    srand(time(NULL));
+    static int tt = 0;
+    tt++;
+    srand(time(NULL) + tt);
 
     for (int i = 0; i < size; i++)
         list[i] = rand()%(max - min) + min;
